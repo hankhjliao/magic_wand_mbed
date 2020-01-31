@@ -1,0 +1,18 @@
+# ignore files in data except for subfolder raw
+!/data/
+/data/*
+!/data/raw/
+
+# ignore files in model except for subfolder pretrained
+!/model/
+/model/*
+!/model/pretrained/
+
+# ignore python cache
+__pycache__/
+.ipynb_checkpoints/
+
+# ignore mbed os and build file
+mbed-os/
+BUILD/
+.mbed
