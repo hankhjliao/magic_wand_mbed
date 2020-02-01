@@ -27,12 +27,12 @@ def prepare_data(label, data, file_to_read):
     data.append(data_new)
 
 
-def generate_unknown_data(data):
-  """Generate unknown data."""
+def generate_negative_data(data):
+  """Generate negative data."""
 
   # Big movement -> around straight line
   for i in range(100):
-    dic = {config.DATA_NAME: [], config.LABEL_NAME: "unknown"}
+    dic = {config.DATA_NAME: [], config.LABEL_NAME: "negative"}
     start_x = (random.random() - 0.5) * 2000
     start_y = (random.random() - 0.5) * 2000
     start_z = (random.random() - 0.5) * 2000
@@ -49,7 +49,7 @@ def generate_unknown_data(data):
 
   # Random
   for i in range(100):
-    dic = {config.DATA_NAME: [], config.LABEL_NAME: "unknown"}
+    dic = {config.DATA_NAME: [], config.LABEL_NAME: "negative"}
     for _ in range(128):
       dic[config.DATA_NAME].append([(random.random() - 0.5) * 1000,
                              (random.random() - 0.5) * 1000,
@@ -58,7 +58,7 @@ def generate_unknown_data(data):
 
   # Stay still
   for i in range(100):
-    dic = {config.DATA_NAME: [], config.LABEL_NAME: "unknown"}
+    dic = {config.DATA_NAME: [], config.LABEL_NAME: "negative"}
     start_x = (random.random() - 0.5) * 2000
     start_y = (random.random() - 0.5) * 2000
     start_z = (random.random() - 0.5) * 2000
@@ -83,7 +83,7 @@ if __name__ == "__main__":
   data = []
   for label in config.labels:
     prepare_data(label, data, "../../data/raw/%s_%s.txt" % (config.LABEL_NAME, label))
-  generate_unknown_data(data)
+  generate_negative_data(data)
   print("data_length: " + str(len(data)))
 
   write_data(data, "../../data/dataset")

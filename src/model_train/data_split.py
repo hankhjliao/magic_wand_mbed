@@ -42,6 +42,7 @@ def split_data(data, train_ratio, valid_ratio, random_seed):
   for item in data:
     for i in num_dic:
       if item[config.LABEL_NAME] == i:
+        print(item[config.LABEL_NAME],len(item[config.DATA_NAME]))
         if train_num_dic[i] > 0:
           train_data.append(item)
           train_num_dic[i] -= 1

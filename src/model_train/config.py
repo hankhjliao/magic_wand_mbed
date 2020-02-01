@@ -1,8 +1,8 @@
 DATA_NAME = "accel_ms2_xyz"
 LABEL_NAME = "gesture"
 
-# label name (you should keep unknown in the end of the list)
-labels = ["wing", "ring", "slope", "unknown"]
+# label name (you should keep negative in the end of the list)
+labels = ["ring", "slope", "negative"]
 
 # data split configuration
 # note that train_ratio + valid_ratio + test_ratio must be 1
@@ -12,7 +12,7 @@ test_ratio = 1 - (train_ratio + valid_ratio)
 data_split_random_seed = 30
 
 # model configuration
-model = "CNN" # model type ("CNN" or "LSTM")
+model = "CNN"
 seq_length = 128
 epochs = 50
 batch_size = 64
