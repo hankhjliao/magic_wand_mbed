@@ -67,12 +67,8 @@ def build_cnn(seq_length):
       tf.keras.layers.Dropout(0.1),  # (batch, 16)
       tf.keras.layers.Dense(4, activation="softmax")  # (batch, 4)
   ])
-  model_path = os.path.join("../../model/pretrained/", "CNN")
   print("Built CNN.")
-  if not os.path.exists(model_path):
-    os.makedirs(model_path)
-  model.load_weights("../../model/pretrained/CNN/weights.h5")
-  return model, model_path
+  return model
 
 
 def build_lstm(seq_length):
@@ -83,11 +79,8 @@ def build_lstm(seq_length):
           input_shape=(seq_length, 3)),  # output_shape=(batch, 44)
       tf.keras.layers.Dense(4, activation="sigmoid")  # (batch, 4)
   ])
-  model_path = os.path.join("../../model/pretrained/", "LSTM")
   print("Built LSTM.")
-  if not os.path.exists(model_path):
-    os.makedirs(model_path)
-  return model, model_path
+  return model
 
 
 def load_data(train_data_path, valid_data_path, test_data_path, seq_length):
@@ -100,21 +93,24 @@ def load_data(train_data_path, valid_data_path, test_data_path, seq_length):
 
 def build_net(seq_length):
   if config.model == "CNN":
-    model, model_path = build_cnn(seq_length)
+    model = build_cnn(seq_length)
   elif config.model == "LSTM":
-    model, model_path = build_lstm(seq_length)
+    model = build_lstm(seq_length)
   else:
     print("Please input correct model name.(CNN  LSTM)")
+  model_path = "../../model/"
+  if not os.path.exists(model_path):
+    os.makedirs(model_path)
   return model, model_path
 
 
 def train_net(
     model,
-    model_path,  # pylint: disable=unused-argument
-    train_len,  # pylint: disable=unused-argument
+    model_path,
+    train_len,
     train_data,
     valid_len,
-    valid_data,  # pylint: disable=unused-argument
+    valid_data,
     test_len,
     test_data,
     kind):
@@ -130,7 +126,7 @@ def train_net(
     valid_data = valid_data.map(reshape_function)
   test_labels = np.zeros(test_len)
   idx = 0
-  for data, label in test_data:  # pylint: disable=unused-variable
+  for _, label in test_data:
     test_labels[idx] = label.numpy()
     idx += 1
   train_data = train_data.batch(config.batch_size).repeat()
@@ -156,7 +152,7 @@ def train_net(
   tflite_model = converter.convert()
 
   # Save the model to disk
-  open("../../model/model.tflite", "wb").write(tflite_model)
+  open(model_path+"model.tflite", "wb").write(tflite_model)
 
   # Convert the model to the TensorFlow Lite format with quantization
   converter = tf.lite.TFLiteConverter.from_keras_model(model)
@@ -164,11 +160,11 @@ def train_net(
   tflite_model = converter.convert()
 
   # Save the model to disk
-  open("../../model/model_quantized.tflite", "wb").write(tflite_model)
+  open(model_path+"model_quantized.tflite", "wb").write(tflite_model)
 
-  basic_model_size = os.path.getsize("../../model/model.tflite")
+  basic_model_size = os.path.getsize(model_path+"model.tflite")
   print("Basic model is %d bytes" % basic_model_size)
-  quantized_model_size = os.path.getsize("../../model/model_quantized.tflite")
+  quantized_model_size = os.path.getsize(model_path+"model_quantized.tflite")
   print("Quantized model is %d bytes" % quantized_model_size)
   difference = basic_model_size - quantized_model_size
   print("Difference is %d bytes" % difference)
