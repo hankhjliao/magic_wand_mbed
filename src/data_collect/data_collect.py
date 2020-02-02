@@ -7,28 +7,31 @@ serdev = '/dev/ttyACM0'
 s = serial.Serial(serdev)
 
 data = []
-tmp = []
+data_new = []
 while True:
   try:
     line = s.readline().decode()
     if '---start---' in line:
-      tmp.clear()
-      print("---")
+      print("---start---")
+      data_new.clear()
     elif '---stop---' in line:
-      print("---")
-      if len(tmp) > 0:
-        print(tmp)
-        data.append(tmp.copy())
+      print("---stop---")
+      if len(data_new) > 0:
+        print("Data saved:")
+        print(data_new)
+        data.append(data_new.copy())
+        data_new.clear()
       print("Data Num =", len(data))
     elif '---delete---' in line:
       if len(data) > 0:
         data.pop()
+        print("Data deleted.")
       print("Data Num =", len(data))
     else:
       print(line, end="")
-      tmp.append(line)
+      data_new.append(line)
   except KeyboardInterrupt:
-    filename = "gesture-"+str(time.strftime("%Y%m%d%H%M%S"))+".txt"
+    filename = "gesture_"+str(time.strftime("%Y%m%d%H%M%S"))+".txt"
     with open(filename, "w") as f:
       for lines in data:
         f.write("-,-,-\n")
