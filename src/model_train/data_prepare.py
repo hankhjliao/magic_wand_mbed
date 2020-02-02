@@ -39,7 +39,7 @@ def generate_negative_data(data):
     x_increase = (random.random() - 0.5) * 10
     y_increase = (random.random() - 0.5) * 10
     z_increase = (random.random() - 0.5) * 10
-    for j in range(128):
+    for j in range(config.seq_length):
       dic[config.DATA_NAME].append([
           start_x + j * x_increase + (random.random() - 0.5) * 6,
           start_y + j * y_increase + (random.random() - 0.5) * 6,
@@ -50,7 +50,7 @@ def generate_negative_data(data):
   # Random
   for i in range(100):
     dic = {config.DATA_NAME: [], config.LABEL_NAME: "negative"}
-    for _ in range(128):
+    for _ in range(config.seq_length):
       dic[config.DATA_NAME].append([(random.random() - 0.5) * 1000,
                              (random.random() - 0.5) * 1000,
                              (random.random() - 0.5) * 1000])
@@ -62,7 +62,7 @@ def generate_negative_data(data):
     start_x = (random.random() - 0.5) * 2000
     start_y = (random.random() - 0.5) * 2000
     start_z = (random.random() - 0.5) * 2000
-    for _ in range(128):
+    for _ in range(config.seq_length):
       dic[config.DATA_NAME].append([
           start_x + (random.random() - 0.5) * 40,
           start_y + (random.random() - 0.5) * 40,
