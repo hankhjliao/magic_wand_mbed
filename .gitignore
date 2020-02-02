@@ -16,3 +16,7 @@ __pycache__/
 mbed-os/
 BUILD/
 .mbed
+
+# ignore .gitignore in the subfolder
+!/.gitignore
+.gitignore
