@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
   // Whether we should clear the buffer next time we fetch data
   bool should_clear_buffer = false;
   bool got_data = false;
-  
+
   // The gesture index of the prediction
   int gesture_index;
 
@@ -125,14 +125,16 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
+  error_reporter->Report("Inference starts...\n");
+
   while (true) {
 
     // Attempt to read new data from the accelerometer
     got_data = ReadAccelerometer(error_reporter, model_input->data.f,
                                  input_length, should_clear_buffer);
-    
+
     // If there was no new data,
-    // don't try to clear the buffer again and wait until next time 
+    // don't try to clear the buffer again and wait until next time
     if (!got_data) {
       should_clear_buffer = false;
       continue;
