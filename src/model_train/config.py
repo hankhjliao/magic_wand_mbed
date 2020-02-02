@@ -13,6 +13,6 @@ data_split_random_seed = 30
 
 # model configuration
 model = "CNN"
-seq_length = 128
+seq_length = 64
 epochs = 50
 batch_size = 64
