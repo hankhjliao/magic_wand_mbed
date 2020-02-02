@@ -125,7 +125,7 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
-  error_reporter->Report("Inference starts...\n");
+  error_reporter->Report("Set up successful...\n");
 
   while (true) {
 
