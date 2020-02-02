@@ -110,7 +110,7 @@ int main(int argc, char* argv[]) {
   // Obtain pointer to the model's input tensor
   TfLiteTensor* model_input = interpreter->input(0);
   if ((model_input->dims->size != 4) || (model_input->dims->data[0] != 1) ||
-      (model_input->dims->data[1] != 128) ||
+      (model_input->dims->data[1] != config.seq_length) ||
       (model_input->dims->data[2] != kChannelNumber) ||
       (model_input->type != kTfLiteFloat32)) {
     error_reporter->Report("Bad input tensor parameters in model");
