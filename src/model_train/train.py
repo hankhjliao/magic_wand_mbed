@@ -48,8 +48,15 @@ def calculate_model_size(model):
   print("Model size:", sum(var_sizes) / 1024, "KB")
 
 
-def build_cnn(seq_length):
-  """Builds a convolutional neural network in Keras."""
+def load_data(train_data_path, valid_data_path, test_data_path, seq_length):
+  data_loader = DataLoader(
+      train_data_path, valid_data_path, test_data_path, seq_length=seq_length)
+  data_loader.format()
+  return data_loader.train_len, data_loader.train_data, data_loader.valid_len, \
+      data_loader.valid_data, data_loader.test_len, data_loader.test_data
+
+
+def build_net(seq_length):
   model = tf.keras.Sequential([
       tf.keras.layers.Conv2D(
           8, (4, 3),
@@ -68,36 +75,6 @@ def build_cnn(seq_length):
       tf.keras.layers.Dense(4, activation="softmax")  # (batch, 4)
   ])
   print("Built CNN.")
-  return model
-
-
-def build_lstm(seq_length):
-  """Builds an LSTM in Keras."""
-  model = tf.keras.Sequential([
-      tf.keras.layers.Bidirectional(
-          tf.keras.layers.LSTM(22),
-          input_shape=(seq_length, 3)),  # output_shape=(batch, 44)
-      tf.keras.layers.Dense(4, activation="sigmoid")  # (batch, 4)
-  ])
-  print("Built LSTM.")
-  return model
-
-
-def load_data(train_data_path, valid_data_path, test_data_path, seq_length):
-  data_loader = DataLoader(
-      train_data_path, valid_data_path, test_data_path, seq_length=seq_length)
-  data_loader.format()
-  return data_loader.train_len, data_loader.train_data, data_loader.valid_len, \
-      data_loader.valid_data, data_loader.test_len, data_loader.test_data
-
-
-def build_net(seq_length):
-  if config.model == "CNN":
-    model = build_cnn(seq_length)
-  elif config.model == "LSTM":
-    model = build_lstm(seq_length)
-  else:
-    print("Please input correct model name.(CNN  LSTM)")
   model_path = "../../model/"
   if not os.path.exists(model_path):
     os.makedirs(model_path)
