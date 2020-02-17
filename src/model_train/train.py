@@ -62,17 +62,17 @@ def build_net(seq_length):
           8, (4, 3),
           padding="same",
           activation="relu",
-          input_shape=(seq_length, 3, 1)),  # output_shape=(batch, 128, 3, 8)
-      tf.keras.layers.MaxPool2D((3, 3)),  # (batch, 42, 1, 8)
-      tf.keras.layers.Dropout(0.1),  # (batch, 42, 1, 8)
+          input_shape=(seq_length, 3, 1)),
+      tf.keras.layers.MaxPool2D((3, 3)),
+      tf.keras.layers.Dropout(0.1),
       tf.keras.layers.Conv2D(16, (4, 1), padding="same",
-                             activation="relu"),  # (batch, 42, 1, 16)
-      tf.keras.layers.MaxPool2D((3, 1), padding="same"),  # (batch, 14, 1, 16)
-      tf.keras.layers.Dropout(0.1),  # (batch, 14, 1, 16)
-      tf.keras.layers.Flatten(),  # (batch, 224)
-      tf.keras.layers.Dense(16, activation="relu"),  # (batch, 16)
-      tf.keras.layers.Dropout(0.1),  # (batch, 16)
-      tf.keras.layers.Dense(len(config.labels), activation="softmax")  # (batch, 4)
+                             activation="relu"),
+      tf.keras.layers.MaxPool2D((3, 1), padding="same"),
+      tf.keras.layers.Dropout(0.1),
+      tf.keras.layers.Flatten(),
+      tf.keras.layers.Dense(16, activation="relu"),
+      tf.keras.layers.Dropout(0.1),
+      tf.keras.layers.Dense(len(config.labels), activation="softmax")
   ])
   print("Built CNN.")
   model_path = "../../model/"
@@ -113,7 +113,7 @@ def train_net(
       train_data,
       epochs=config.epochs,
       validation_data=valid_data,
-      steps_per_epoch=1000,
+      steps_per_epoch=config.steps_per_epoch,
       validation_steps=int((valid_len - 1) / config.batch_size + 1),
       callbacks=[tensorboard_callback])
   loss, acc = model.evaluate(test_data)
@@ -121,9 +121,10 @@ def train_net(
   confusion = tf.math.confusion_matrix(
       labels=tf.constant(test_labels),
       predictions=tf.constant(pred),
-      num_classes=4)
+      num_classes=len(config.labels))
   print(confusion)
   print("Loss {}, Accuracy {}".format(loss, acc))
+
   # Convert the model to the TensorFlow Lite format without quantization
   converter = tf.lite.TFLiteConverter.from_keras_model(model)
   tflite_model = converter.convert()
