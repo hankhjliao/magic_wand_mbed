@@ -72,7 +72,7 @@ def build_net(seq_length):
       tf.keras.layers.Flatten(),  # (batch, 224)
       tf.keras.layers.Dense(16, activation="relu"),  # (batch, 16)
       tf.keras.layers.Dropout(0.1),  # (batch, 16)
-      tf.keras.layers.Dense(4, activation="softmax")  # (batch, 4)
+      tf.keras.layers.Dense(len(config.labels), activation="softmax")  # (batch, 4)
   ])
   print("Built CNN.")
   model_path = "../../model/"
