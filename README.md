@@ -28,6 +28,8 @@ I'm trying to deploy it to [mbed K66F](https://os.mbed.com/platforms/FRDM-K66F/)
 
 1. mbed OS Version: 5.14.0
 2. TensorFlow Lite Version: 2.1.0
+3. Python Version: 3.7
+4. GNU Screen
 
 ## Usage
 
