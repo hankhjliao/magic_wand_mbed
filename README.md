@@ -26,7 +26,14 @@ I'm trying to deploy it to [mbed K66F](https://os.mbed.com/platforms/FRDM-K66F/)
 
 ## Getting Started
 
+1. mbed OS Version: 5.14.0
+2. TensorFlow Lite Version: 2.1.0
+
 ## Usage
+
+- [Data Collection](src/data_collect/README.md)
+- [Model Training](src/model_train/README.md)
+- [Model Deployment](src/model_deploy/README.md)
 
 ## Known Issues
 
@@ -49,5 +56,12 @@ Distributed under the Apache License 2.0. See `LICENSE` for more information.
 Project Link: [https://github.com/hankliao87/magic_wand_mbed](https://github.com/hankliao87/magic_wand_mbed)
 
 ## Acknowledgements
+- [mbed OS](https://github.com/ARMmbed/mbed-os)
+- [TensorFlow](https://github.com/tensorflow/tensorflow/)
+- [Magic wand example of TensorFlow Lite](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro/examples/magic_wand)
+- [Using Google Colab with GitHub](https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb)
+- [How to use Google Colab](https://www.geeksforgeeks.org/how-to-use-google-colab/)
+- [TensorFlow Lite for Microcontrollers](https://www.tensorflow.org/lite/microcontrollers)
+- [TensorFlow Lite API Reference](https://www.tensorflow.org/lite/api_docs/cc)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
