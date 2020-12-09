@@ -14,9 +14,9 @@
 
 Note: You can change the config in `config.h`
 
-## TensorFlow Lite functions used in this project
+## TensorFlow Lite Functions Used in this Project
 
-### Logging Method
+### Logging method
 ```cpp
 static tflite::MicroErrorReporter micro_error_reporter;
 tflite::ErrorReporter* error_reporter = &micro_error_reporter;
