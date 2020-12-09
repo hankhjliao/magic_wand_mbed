@@ -33,11 +33,9 @@ I'm trying to deploy it to [mbed K66F](https://os.mbed.com/platforms/FRDM-K66F/)
 
 ## Usage
 
-- [Data Collection](src/data_collect/README.md)
-- [Model Training](src/model_train/README.md)
-- [Model Deployment](src/model_deploy/README.md)
-
-## Known Issues
+- [Data Collection](src/data_collect/)
+- [Model Training](src/model_train/)
+- [Model Deployment](src/model_deploy/)
 
 ## Contributing
 
