@@ -21,7 +21,7 @@ Deploy magic wand model on mbed K66F
 </p>
 
 ## About the Project
-[Original project](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro/examples/magic_wand) only deploys to Arduino, Himax WE1 EVB, and SparkFun Edge.  
+[Original project](https://github.com/tensorflow/tensorflow/tree/r2.1/tensorflow/lite/experimental/micro/examples/magic_wand) only deploys to Arduino, Himax WE1 EVB, and SparkFun Edge.  
 I'm trying to deploy it to [mbed K66F](https://os.mbed.com/platforms/FRDM-K66F/).
 
 ## Getting Started
