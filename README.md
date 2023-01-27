@@ -6,16 +6,16 @@ Deploy magic wand model on mbed K66F
 </p>
 
 <p align="center">
-<a href="https://github.com/hankliao87/magic_wand_mbed/graphs/contributors">
-<img src="https://img.shields.io/github/contributors/hankliao87/magic_wand_mbed.svg?style=flat-square" alt=""></a>
-<a href="https://github.com/hankliao87/magic_wand_mbed/network/members">
-<img src="https://img.shields.io/github/forks/hankliao87/magic_wand_mbed.svg?style=flat-square" alt=""></a>
-<a href="https://github.com/hankliao87/magic_wand_mbed/stargazers">
-<img src="https://img.shields.io/github/stars/hankliao87/magic_wand_mbed.svg?style=flat-square" alt=""></a>
-<a href="https://github.com/hankliao87/magic_wand_mbed/issues">
-<img src="https://img.shields.io/github/issues/hankliao87/magic_wand_mbed.svg?style=flat-square" alt=""></a>
-<a href="https://github.com/hankliao87/magic_wand_mbed/blob/master/LICENSE.txt">
-<img src="https://img.shields.io/github/license/hankliao87/magic_wand_mbed.svg?style=flat-square" alt=""></a>
+<a href="https://github.com/hankhjliao/magic_wand_mbed/graphs/contributors">
+<img src="https://img.shields.io/github/contributors/hankhjliao/magic_wand_mbed.svg?style=flat-square" alt=""></a>
+<a href="https://github.com/hankhjliao/magic_wand_mbed/network/members">
+<img src="https://img.shields.io/github/forks/hankhjliao/magic_wand_mbed.svg?style=flat-square" alt=""></a>
+<a href="https://github.com/hankhjliao/magic_wand_mbed/stargazers">
+<img src="https://img.shields.io/github/stars/hankhjliao/magic_wand_mbed.svg?style=flat-square" alt=""></a>
+<a href="https://github.com/hankhjliao/magic_wand_mbed/issues">
+<img src="https://img.shields.io/github/issues/hankhjliao/magic_wand_mbed.svg?style=flat-square" alt=""></a>
+<a href="https://github.com/hankhjliao/magic_wand_mbed/blob/master/LICENSE.txt">
+<img src="https://img.shields.io/github/license/hankhjliao/magic_wand_mbed.svg?style=flat-square" alt=""></a>
 </p>
 
 </p>
@@ -53,7 +53,7 @@ Distributed under the Apache License 2.0. See `LICENSE` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/hankliao87/magic_wand_mbed](https://github.com/hankliao87/magic_wand_mbed)
+Project Link: [https://github.com/hankhjliao/magic_wand_mbed](https://github.com/hankhjliao/magic_wand_mbed)
 
 ## Acknowledgements
 - [mbed OS](https://github.com/ARMmbed/mbed-os)
